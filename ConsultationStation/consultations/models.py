@@ -1,11 +1,11 @@
 from django.db import models
 from doctors.models import Doctor
-from clients.models import Client
+from users.models import User
 
 # Modelo de dados das Consultas
 class Consultation(models.Model):
     patient_name = models.CharField(max_length=100, verbose_name="Paciente")
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    user_account = models.ForeignKey(User, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name="Data da Consulta")
     description = models.TextField(max_length=200, verbose_name="Descrição da Consulta")

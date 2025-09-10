@@ -1,0 +1,96 @@
+/* Cores */
+:root {
+    --primary-color: #70b2cc;
+    --primary-dark: #4682B4;
+    --text-blue: #1f3e6d;
+    --text-dark: #333333;
+    --text-light: #f5f5f5;
+    --bg-light: #f2f3f7;
+    --bg-light-alt: #d0d1d8;
+}
+
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    color: var(--text-dark); /* Cor do texto */
+    background-color: var(--bg-light-alt); /* Cor do background */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove padding padrão */
+}
+header {
+    display: flex; /* Transforma em um container flexível */
+    flex-wrap: wrap; /* Permite que os itens "quebrem" para a próxima linha se não houver espaço */
+    justify-content: space-between; /* Deixa o texto de um lado e os links do outro */
+    background-color: var(--primary-color); /* Cor de fundo do cabeçalho */
+    color: var(--text-light); /* Cor do texto do cabeçalho */
+    text-align: left; /* Alinha o texto à esquerda */
+    align-items: center; /* Centraliza verticalmente os itens */
+    padding-left: 30px; /* Espaçamento interno à esquerda */
+    padding-right: 20px; /* Espaçamento interno à direita */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil entre o header e o main */
+}
+header nav ul {
+    display: flex; /* Transforma em um container flexível */
+    list-style: none; /* Remove os marcadores de lista */
+}
+header nav a {
+    color: var(--text-blue); /* Cor dos links */
+    font-size: 1.5vw; /* Tamanho da fonte dos links */
+    padding: 1.5vw; /* Espaçamento interno dos links */
+    padding-left: 3vw; /* Espaçamento interno dos links */
+    padding-right: 3vw; /* Espaçamento interno dos links */
+    border-left: 1px solid var(--text-light); /* Divisória entre os links */
+    border-radius: 0.3vw; /* Bordas arredondadas */
+    text-decoration: none; /* Remove sublinhado dos links */
+}
+header nav a:hover {
+    background-color: var(--primary-dark); /* Muda a cor de fundo ao passar o mouse */
+    color: var(--text-light); /* Muda a cor do texto ao passar o mouse */
+}
+main {
+    padding-top: 40px; /* Espaçamento interno no topo */
+    padding-bottom: 185px; /* Espaçamento interno na parte inferior */
+    background-color: var(--bg-light); /* Cor de fundo do main */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin: 3px; /* Margem ao redor do main */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil entre o main e o footer */
+}
+.main-center {
+    text-align: center; /* Centraliza o texto */
+}
+.main-left {
+    text-align: left; /* Alinha o texto à esquerda */
+}
+footer {
+    background-color: var(--primary-dark); /* Cor de fundo do rodapé */
+    color: var(--text-light); /* Cor do texto do rodapé */
+    text-align: left; /* Alinha o texto à esquerda */
+    padding: 10px; /* Espaçamento interno */
+    padding-left: 30px; /* Espaçamento interno à esquerda */
+    bottom: 0; /* Fixa o rodapé na parte inferior */
+}
+h1 {
+    font-size: 3vw; /* Tamanho da fonte do título */
+}
+main button {
+    background-color: var(--primary-color); /* Cor de fundo dos botões */
+    color: var(--text-light); /* Cor do texto dos botões */
+    border-color: var(--primary-dark); /* Cor da borda dos botões */
+    padding: 10px 20px; /* Espaçamento interno dos botões: horizontal | vertical */
+    margin: 20px; /* Margem ao redor dos botões */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    height: 55px; /* Altura padrão dos botões */
+    width: 130px; /* Largura padrão dos botões */
+}
+main button:hover {
+    background-color: var(--primary-dark); /* Muda a cor de fundo ao passar o mouse */
+}
+.big_button {
+    height: 110px; /* Altura dos botões grandes */
+    width: 260px; /* Largura dos botões grandes */
+    font-size: 30px; /* Tamanho da fonte dos botões grandes */
+}
+/* Lembre-se de rodar python manage.py collectstatic em produção para coletar 
+todos os arquivos estáticos. Para o desenvolvimento, o Django já serve os arquivos 
+estáticos automaticamente.  */
