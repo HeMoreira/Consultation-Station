@@ -10,6 +10,6 @@ class CustomRegistrationForm(UserCreationForm):
 
 #Faz modificações no formulário de autenticação de usuário
 class CustomAuthenticationForm(AuthenticationForm):
-    email = forms.EmailField(label='Email')
+    #por mais que utilizemos email para login, os campos devem ser chamados de 'username' e 'password'
+    username = forms.EmailField(label='Email')
     password = forms.CharField(label='Senha', widget=forms.PasswordInput)
-
