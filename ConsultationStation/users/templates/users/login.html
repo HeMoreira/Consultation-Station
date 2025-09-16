@@ -4,10 +4,11 @@
 
 {% block main %}
 <main class="main-center">
-    <h2>Login</h2>
+    <h2>Página de Login</h2>
     <p>Acesse sua conta antes de criar novas consultas</p>
     <form method="post">
         {% csrf_token %}
+        <hr>
         {{ form.as_p }}
         <button type="submit">Entrar</button>
     </form>

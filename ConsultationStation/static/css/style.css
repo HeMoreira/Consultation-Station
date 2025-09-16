@@ -86,10 +86,22 @@ main button {
 main button:hover {
     background-color: var(--primary-dark); /* Muda a cor de fundo ao passar o mouse */
 }
+
+hr {
+    border: 0; /* Remove a borda padrão */
+    height: 1px; /* Define a altura da linha */
+    background-color: var(--bg-light-alt); /* Cor da linha */
+    margin: 20px 50px; /* Margem acima e abaixo da linha */
+}
+
 .big_button {
     height: 110px; /* Altura dos botões grandes */
     width: 260px; /* Largura dos botões grandes */
     font-size: 30px; /* Tamanho da fonte dos botões grandes */
+}
+.link_button {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: var(--text-light); /* Cor do texto dos links */
 }
 /* Lembre-se de rodar python manage.py collectstatic em produção para coletar 
 todos os arquivos estáticos. Para o desenvolvimento, o Django já serve os arquivos 
