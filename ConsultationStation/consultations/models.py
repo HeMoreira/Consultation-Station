@@ -6,7 +6,7 @@ from users.models import User
 class Consultation(models.Model):
     patient_name = models.CharField(max_length=100, verbose_name="Paciente")
     user_account = models.ForeignKey(User, on_delete=models.CASCADE)
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, verbose_name="Médico Responsável")
     date = models.DateTimeField(verbose_name="Data da Consulta")
     description = models.TextField(max_length=200, verbose_name="Descrição da Consulta")
     duration = models.IntegerField(default=30)

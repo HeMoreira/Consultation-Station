@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Nova Consulta{% endblock %}
+
+{% block main %}
+<main class="main-center">
+    <h2>Nova Consulta</h2>
+    <p>Preencha o formulário para marcar uma nova consulta</p>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agendar Consulta</button>
+    </form>
+</main>
+{% endblock %}

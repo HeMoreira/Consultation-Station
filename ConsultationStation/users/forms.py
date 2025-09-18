@@ -6,6 +6,7 @@ from .models import User
 class CustomRegistrationForm(UserCreationForm):
     name = forms.CharField(label="Nome Completo", max_length=100, widget=forms.TextInput(attrs={'size': 46}))
     address = forms.CharField(label="Endereço", max_length=255, widget=forms.TextInput(attrs={'size': 51}))
+    date_of_birth = forms.DateField(label="Data de Nascimento", widget=forms.DateInput(attrs={'type': 'date'}))
     email = forms.EmailField(label="Email", max_length=100, widget=forms.EmailInput(attrs={'placeholder': 'Digite seu Email', 'size': 31}))
     password1 = forms.CharField(label="Senha", max_length=100, widget=forms.PasswordInput(attrs={'placeholder': 'Digite sua Senha', 'size': 30}))
     password2 = forms.CharField(label="Senha", max_length=100, widget=forms.PasswordInput(attrs={'placeholder': 'Confirme a sua Senha', 'size': 30}))
