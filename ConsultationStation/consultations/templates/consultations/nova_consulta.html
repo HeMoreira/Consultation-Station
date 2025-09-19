@@ -9,7 +9,20 @@
     <hr>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.patient_name.label_tag }}
+        {{ form.patient_name }}
+        <br><br>
+        {{ form.doctor.label_tag }}
+        {{ form.doctor }}
+        <br><br>
+        {{ form.date.label_tag }}
+        {{ form.date }}
+        {{ form.duration.label_tag }}
+        {{ form.duration }}
+        <hr>
+        {{ form.description.label_tag }}
+        {{ form.description }}
+        <hr>
         <button type="submit">Agendar Consulta</button>
     </form>
 </main>

@@ -6,8 +6,8 @@
 <main class="main-center">
     <h2>Seja Bem Vindo ao Consultation Station!</h2>
     <p>Você pode agendar uma nova consulta clicando no botão 'Nova Consulta'</p>
-
-    <button class="big_button">Nova<br>Consulta</button>
-    <button class="big_button">Ver Consultas <br><small>*admin*</small></button>
+    
+    <a href="{% url 'nova_consulta' %}" class="big_link_button">Nova <br>Consulta</a>
+    <a href="{% url 'cronograma_consultas' %}", class="big_link_button">Ver Consultas <small>*admin*</small></a>
 </main>
 {% endblock %}

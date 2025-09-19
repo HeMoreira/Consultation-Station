@@ -99,10 +99,38 @@ hr {
     width: 260px; /* Largura dos botões grandes */
     font-size: 30px; /* Tamanho da fonte dos botões grandes */
 }
-.link_button {
-    text-decoration: none; /* Remove o sublinhado dos links */
-    color: var(--text-light); /* Cor do texto dos links */
+
+.link_button, .big_link_button {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    margin: 20px;
+    cursor: pointer;
+    display: inline-block; /* Faz o link se comportar como botão */
+    text-align: center;
+
+    /* Define as cores específicas para cada lado da borda */
+    border-color: var(--primary-dark) var(--text-blue) var(--text-blue) var(--primary-dark); /* top | right | bottom | left */
+    border-radius: 6px; /* Deixa as bordas arredondadas */
+    border-width: 3px; /* Defina o tamanho da borda */
+    border-style: solid; /* Faz da borda visivel */
 }
+.link_button {
+    height: 40px; /* Altura dos botões normais */
+    width: 90px; /* Largura dos botões normais */
+    font-size: 14px; /* Tamanho da fonte dos botões normais */
+    padding: 15px 20px 10px 20px; /* top | right | bottom | left */
+}
+.big_link_button {
+    height: 80px; /* Altura dos botões grandes */
+    width: 180px; /* Largura dos botões grandes */
+    font-size: 25px; /* Tamanho da fonte dos botões grandes */
+    padding: 25px 20px 10px 20px; /* top | right | bottom | left */
+}
+.link_button:hover, .big_link_button:hover {
+    background-color: var(--primary-dark);
+}
+
 /* Lembre-se de rodar python manage.py collectstatic em produção para coletar 
 todos os arquivos estáticos. Para o desenvolvimento, o Django já serve os arquivos 
 estáticos automaticamente.  */
