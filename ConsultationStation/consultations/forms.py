@@ -1,5 +1,6 @@
 from django import forms
 from .models import Consultation
+from doctors.models import Doctor
 
 # Formulário para criação de novas consultas
 class ConsultationForm(forms.ModelForm):
@@ -11,3 +12,8 @@ class ConsultationForm(forms.ModelForm):
     class Meta:
         model = Consultation
         fields = ['patient_name', 'doctor', 'date', 'description', 'duration']
+
+# Formulário para vizualização das consultas agendadas com base no médico e data
+class ConsultationFilterForm(forms.Form):
+    doctor = forms.ModelChoiceField(label="Médico", queryset=Doctor.objects.all())
+    date = forms.DateField(label="Data", required=False, widget=forms.DateInput(attrs={'type': 'date'}))
