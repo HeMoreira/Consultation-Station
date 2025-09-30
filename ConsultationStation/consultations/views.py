@@ -62,6 +62,30 @@ def cronograma_consultas(request):
                         print(data_consulta)
                 lista_dias[dia] = lista_consultas
             listas_consultas[horario] = lista_dias
+    elif request.method == 'GET':
+        form = ConsultationFilterForm()
+        date = timezone.now().date()
+        # Adiciona os 7 próximos dias a partir da data selecionada para exibição
+        lista_datas_exibicao = []
+        for i in range(7):
+            lista_datas_exibicao.append(date + timezone.timedelta(days=i))
+
+        # Monta a lista de consultas para exibição no template
+        listas_consultas = {} # formato {horario: {data: [consultas]}}
+        medico_atual = None
+        for horario in horarios:
+            lista_dias = {}
+            for dia in lista_datas_exibicao:
+                lista_consultas = []
+                for consulta in consultas:
+                    # Converte a data da consulta para o timezone local
+                    data_consulta = timezone.localtime(consulta.date)
+                    # Verifica se a consulta é do médico e dia/horário corretos
+                    if data_consulta.strftime("%H:%M") == horario and data_consulta.strftime("%d-%m-%Y") == dia.strftime("%d-%m-%Y") and consulta.doctor.name == medico_atual:
+                        lista_consultas.append(consulta)
+                        print(data_consulta)
+                lista_dias[dia] = lista_consultas
+            listas_consultas[horario] = lista_dias
     else:
         form = ConsultationFilterForm()
     return render(request, 'consultations/cronograma_consultas.html', {'listas_consultas': listas_consultas, 'medico_atual': medico_atual, 'lista_datas_exibicao': lista_datas_exibicao, 'form': form})
