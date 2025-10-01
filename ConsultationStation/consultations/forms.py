@@ -16,4 +16,4 @@ class ConsultationForm(forms.ModelForm):
 # Formulário para vizualização das consultas agendadas com base no médico e data
 class ConsultationFilterForm(forms.Form):
     doctor = forms.ModelChoiceField(label="Médico", queryset=Doctor.objects.all())
-    date = forms.DateField(label="Data", required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+    date = forms.DateField(label="Data a ser consultada", required=False, widget=forms.DateInput(attrs={'type': 'date'}))

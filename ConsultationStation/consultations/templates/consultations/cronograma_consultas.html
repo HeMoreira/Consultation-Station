@@ -14,7 +14,7 @@
         <br><br>
         {{ form.date.label_tag }}
         {{ form.date }}
-        <hr>
+        <br>
         <button type="submit">Filtrar</button>
     </form>
     <hr>
@@ -32,7 +32,7 @@
             <!-- Percorre cada horário para posicionamento das consultas -->
             {% for horario, dias in listas_consultas.items %}
             <tr>
-                <th>{{ horario }}</th>
+                <th class="subheader">{{ horario }}</th>
                 <!-- Percorre cada dia da semana para posicionamento das consultas -->
                 {% for dia, consultas in dias.items %}
                 <td>

@@ -59,7 +59,6 @@ def cronograma_consultas(request):
                     # Verifica se a consulta é do médico e dia/horário corretos
                     if data_consulta.strftime("%H:%M") == horario and data_consulta.strftime("%d-%m-%Y") == dia.strftime("%d-%m-%Y") and consulta.doctor.name == medico_atual:
                         lista_consultas.append(consulta)
-                        print(data_consulta)
                 lista_dias[dia] = lista_consultas
             listas_consultas[horario] = lista_dias
     elif request.method == 'GET':
@@ -83,7 +82,6 @@ def cronograma_consultas(request):
                     # Verifica se a consulta é do médico e dia/horário corretos
                     if data_consulta.strftime("%H:%M") == horario and data_consulta.strftime("%d-%m-%Y") == dia.strftime("%d-%m-%Y") and consulta.doctor.name == medico_atual:
                         lista_consultas.append(consulta)
-                        print(data_consulta)
                 lista_dias[dia] = lista_consultas
             listas_consultas[horario] = lista_dias
     else:
