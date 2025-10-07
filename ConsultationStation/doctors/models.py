@@ -9,7 +9,7 @@ class Doctor(models.Model):
     email = models.EmailField(max_length=100, verbose_name="Email do Médico")
     address = models.CharField(max_length=255, verbose_name="Endereço do Médico")
     cpf = models.CharField(max_length=11, unique=True, verbose_name="CPF do Médico")
-    date_of_birth = models.DateField(verbose_name="Data de Nascimento")
+    date_of_birth = models.DateField(null=True, verbose_name="Data de Nascimento")
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Data de Criação")
 
     class Meta:
