@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Consultation, User, Doctor
+from ..models import Consultation, User, Doctor
 from django.db import IntegrityError, transaction
 from datetime import datetime, date
 # Create your tests here.
