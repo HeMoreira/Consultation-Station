@@ -3,11 +3,7 @@ from ..models import User
 from django.urls import reverse
 
 class ConsultationViewsTest(TestCase):
-    ## Para corrigir os erros, é necessário identificar e diferenciar interações com ou sem usuário logado.
-    ## Até o momento, os testes estão sendo feitos sem usuário logado, o que redireciona para a página de failure
-
     # Testa se as views de nova consulta e cronograma de consultas estão acessíveis e usam os templates corretos
-    
     def setUp(self):
         self.user_data = {
             'email': 'enzogabriel@exemplo.com',

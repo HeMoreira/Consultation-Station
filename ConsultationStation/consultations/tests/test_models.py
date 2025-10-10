@@ -1,7 +1,9 @@
 from django.test import TestCase
 from ..models import Consultation, User, Doctor
 from django.db import IntegrityError, transaction
-from datetime import datetime, date
+from datetime import date
+from django.utils import timezone
+
 # Create your tests here.
 
 class ConsultationModelTest(TestCase):
@@ -29,7 +31,7 @@ class ConsultationModelTest(TestCase):
         }
         self.consultation_data = {
             'patient_name': 'Ana Clara',
-            'date': datetime(2024, 7, 20, 14, 30),
+            'date': timezone.now().date(),
             'description': 'Consulta de rotina',
             'duration': 30,
             'user_account': User.objects.create_user(**user_data),
