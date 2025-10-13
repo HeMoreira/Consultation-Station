@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block main %}
+<main class="main-center">
+    <h2>Perfil do Usuário</h2>
+    <p>Seja bem-vindo, {{ user.name }}!</p>
+    <p>Email: {{ user.email }}</p>
+    <hr>
+    <p><b>Histórico de Consultas</b></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Data da Consulta</th>
+                <th>Paciente</th>
+                <th>Médico</th>
+                <th>Especialidade</th>
+                <th>Minutos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for consulta in historico_de_consultas %}
+                <tr>
+                    <td>{{ consulta.date }}</td>
+                    <td>{{ consulta.patient_name }}</td>
+                    <td>{{ consulta.doctor.name }}</td>
+                    <td>{{ consulta.doctor.specialty }}</td>
+                    <td>{{ consulta.duration }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">Você não tem consultas recentes...</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if user.is_staff %}
+        <p><small>Você tem permissão de Staff</small></p>
+    {% else %}
+        <p><small>Obrigado pela preferência :)</small></p>
+    {% endif %}
+    <hr>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Sair da Conta</button>
+    </form>
+</main>
+{% endblock %}

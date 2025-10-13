@@ -19,12 +19,7 @@
                 <li><a href="{% url 'index' %}"><i class="bi bi-house-fill"></i> Página Principal</a></li>
                 <li><a href=""><i class="bi bi-info-circle-fill"></i> Mais sobre mim :)</a></li>
                 {% if user.is_authenticated %}
-                    <li>
-                        <form action="{% url 'logout' %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit">{{ user.name }}</button>
-                        </form>
-                    </li>
+                    <li><a href="{% url 'profile' %}"><i class="bi bi-person-circle"></i> Profile</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}

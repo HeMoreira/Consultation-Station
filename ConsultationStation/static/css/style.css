@@ -38,8 +38,8 @@ header nav a {
     color: var(--text-blue); /* Cor dos links */
     font-size: 1.5vw; /* Tamanho da fonte dos links */
     padding: 1.5vw; /* Espaçamento interno dos links */
-    padding-left: 3vw; /* Espaçamento interno dos links */
-    padding-right: 3vw; /* Espaçamento interno dos links */
+    padding-left: 2.5vw; /* Espaçamento interno dos links */
+    padding-right: 2.5vw; /* Espaçamento interno dos links */
     border-left: 1px solid var(--text-light); /* Divisória entre os links */
     border-radius: 0.3vw; /* Bordas arredondadas */
     text-decoration: none; /* Remove sublinhado dos links */
@@ -72,6 +72,9 @@ footer {
 }
 h1 {
     font-size: 3vw; /* Tamanho da fonte do título */
+}
+h2 {
+    font-size: 35px;
 }
 main button {
     background-color: var(--primary-color); /* Cor de fundo dos botões */
