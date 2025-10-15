@@ -26,7 +26,7 @@ if not SECRET_KEY:
     raise ValueError("SECRET_KEY não encontrada nas variáveis de ambiente.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
