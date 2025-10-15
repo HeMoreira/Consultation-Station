@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn ConsultationStation.wsgi
+web: gunicorn ConsultationStation.wsgi:application
