@@ -26,8 +26,8 @@ header {
     color: var(--text-light); /* Cor do texto do cabeçalho */
     text-align: left; /* Alinha o texto à esquerda */
     align-items: center; /* Centraliza verticalmente os itens */
-    padding-left: 30px; /* Espaçamento interno à esquerda */
-    padding-right: 20px; /* Espaçamento interno à direita */
+    padding-left: 4vw; /* Espaçamento interno à esquerda */
+    padding-right: 2vw; /* Espaçamento interno à direita */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil entre o header e o main */
 }
 header nav ul {
@@ -38,8 +38,8 @@ header nav a {
     color: var(--text-blue); /* Cor dos links */
     font-size: 1.5vw; /* Tamanho da fonte dos links */
     padding: 1.5vw; /* Espaçamento interno dos links */
-    padding-left: 2.5vw; /* Espaçamento interno dos links */
-    padding-right: 2.5vw; /* Espaçamento interno dos links */
+    padding-left: 2vw; /* Espaçamento interno dos links */
+    padding-right: 2vw; /* Espaçamento interno dos links */
     border-left: 1px solid var(--text-light); /* Divisória entre os links */
     border-radius: 0.3vw; /* Bordas arredondadas */
     text-decoration: none; /* Remove sublinhado dos links */
@@ -95,7 +95,7 @@ hr {
     border: 0; /* Remove a borda padrão */
     height: 1px; /* Define a altura da linha */
     background-color: var(--bg-light-alt); /* Cor da linha */
-    margin: 20px 50px; /* Margem acima e abaixo da linha */
+    margin: 2vw 5vw; /* Margem acima e abaixo da linha */
 }
 
 .big_button {

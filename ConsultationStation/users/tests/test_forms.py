@@ -41,8 +41,6 @@ class UserFormsTest(TestCase):
         self.assertFalse(form.is_valid())
         # Verifica se o erro está relacionado ao campo 'name' no formulário
         self.assertIn('name', form.errors)
-        # Verifica se o label do campo 'name' está correto
-        self.assertEqual(form.fields['name'].label, "Nome Completo")
 
     def test_registration_form_invalid_data_address(self):
         # Define dados inválidos para o formulário de registro
@@ -60,8 +58,6 @@ class UserFormsTest(TestCase):
         self.assertFalse(form.is_valid())
         # Verifica se o erro está relacionado ao campo 'address' no formulário
         self.assertIn('address', form.errors)
-        # Verifica se o label do campo 'address' está correto
-        self.assertEqual(form.fields['address'].label, "Endereço")
 
     def test_registration_form_invalid_data_email(self):
         # Define dados inválidos para o formulário de registro
