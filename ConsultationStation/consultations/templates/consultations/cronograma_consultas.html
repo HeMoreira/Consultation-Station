@@ -7,7 +7,7 @@
     <h2>Cronograma de Consultas</h2>
     <p>Verifique as consultas marcadas até então. Você pode filtra-las por profissional, dia e nome do paciente.</p>
     <hr>
-    <form method="post">
+    <form method="post" id="filter-form">
         {% csrf_token %}
         {{ form.doctor.label_tag }}
         {{ form.doctor }}
@@ -15,8 +15,20 @@
         {{ form.date.label_tag }}
         {{ form.date }}
         <br>
+        <input type="hidden" name="screen_width" id="screen_width" value="">
         <button type="submit">Filtrar</button>
     </form>
+    <script>
+        // obtem a largura da tela e passa para o input oculto antes do envio
+        document.addEventListener('DOMContentLoaded', function() {
+            var tela = document.getElementById('screen_width');
+            var form = document.getElementById('filter-form');
+            form.addEventListener('submit', function() {
+                // garante que está atualizado no momento do envio
+                tela.value = window.screen.width
+            });
+        });
+    </script>
     <hr>
     <table>
         <thead>

@@ -38,13 +38,19 @@ def cronograma_consultas(request):
             # Pega os dados do formulário para envio ao template
             doctor = form.cleaned_data.get('doctor')
             date = form.cleaned_data.get('date')
+            screen_width = form.cleaned_data.get('screen_width')
             medico_atual = doctor.name
             # Considera a data do sistema para a exibição se uma diferente não for colocada
             if date is None:
                 date = timezone.now().date()
-            # Adiciona os 7 próximos dias a partir da data selecionada para exibição
+            # Adiciona uma quantia diferente de registros dependendo do tamanho da tela
             lista_datas_exibicao = []
-            for i in range(7):
+            quantity_of_dates = 5
+            if int(screen_width) < 768:
+                quantity_of_dates = 1
+            else:
+                quantity_of_dates = 5
+            for i in range(quantity_of_dates):
                 lista_datas_exibicao.append(date + timezone.timedelta(days=i))
 
         # Monta a lista de consultas para exibição no template
@@ -64,9 +70,9 @@ def cronograma_consultas(request):
     elif request.method == 'GET':
         form = ConsultationFilterForm()
         date = timezone.now().date()
-        # Adiciona os 7 próximos dias a partir da data selecionada para exibição
+        # Adiciona os 5 próximos dias a partir da data selecionada para exibição
         lista_datas_exibicao = []
-        for i in range(7):
+        for i in range(3):
             lista_datas_exibicao.append(date + timezone.timedelta(days=i))
 
         # Monta a lista de consultas para exibição no template

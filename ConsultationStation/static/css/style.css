@@ -158,6 +158,18 @@ th {
     font-weight: bold; /* Negrito para os cabeçalhos */
     font-size: 1.2vw;
 }
+@media (max-width: 768px) {
+    td, th {
+        font-size: 4vw;
+        padding: 8px 10px;
+    }
+}
+@media (max-width: 900px) {
+    td, th {
+        font-size: 2.5vw;
+        padding: 8px 10px;
+    }
+}
 .subheader {
     background-color: var(--primary-light);
 }

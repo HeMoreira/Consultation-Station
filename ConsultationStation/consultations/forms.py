@@ -17,3 +17,4 @@ class ConsultationForm(forms.ModelForm):
 class ConsultationFilterForm(forms.Form):
     doctor = forms.ModelChoiceField(label="Médico", queryset=Doctor.objects.all())
     date = forms.DateField(label="Data a ser consultada", required=False, widget=forms.DateInput(attrs={'type': 'date', 'style': 'width: 150px; height: 20px;'}))
+    screen_width = forms.IntegerField(required=False, widget=forms.HiddenInput())
