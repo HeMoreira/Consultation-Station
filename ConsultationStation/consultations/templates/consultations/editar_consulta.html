@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar{% endblock %}
+
+{% block main %}
+<main class="main-center">
+    <h2>Editar Consulta</h2>
+    <p>Atualize os detalhes da consulta conforme necessário.</p>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.patient_name.label_tag }}
+        {{ form.patient_name }}
+        <br><br>
+        {{ form.doctor.label_tag }}
+        {{ form.doctor }}
+        <br><br>
+        {{ form.date.label_tag }}
+        {{ form.date }}
+        {{ form.duration.label_tag }}
+        {{ form.duration }}
+        <hr>
+        <p>Descrição curta:</p>
+        {{ form.description }}
+        <hr>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</main>
+{% endblock %}

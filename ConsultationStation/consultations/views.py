@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .forms import ConsultationForm, ConsultationFilterForm
 from .models import Consultation
 from django.utils import timezone
@@ -93,6 +94,48 @@ def cronograma_consultas(request):
     else:
         form = ConsultationFilterForm()
     return render(request, 'consultations/cronograma_consultas.html', {'listas_consultas': listas_consultas, 'medico_atual': medico_atual, 'lista_datas_exibicao': lista_datas_exibicao, 'form': form})
+
+# View para exibir os detalhes de uma consulta específica
+def detalhes_consulta(request, pk):
+    # Garante que o usuário esteja logado em uma conta de staff
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('failure')
+
+    # retorna a consulta do id recebido
+    consulta = get_object_or_404(Consultation, pk=pk)
+    return render(request, 'consultations/detalhes_consulta.html', {'consulta': consulta})
+
+# View para editar uma consulta existente
+def editar_consulta(request, pk):
+    # Garante que o usuário esteja logado em uma conta de staff
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('failure')
+    
+    # Retorna a consulta do id recebido e permite a edição
+    consulta = get_object_or_404(Consultation, pk=pk)
+    if request.method == "POST":
+        form = ConsultationForm(request.POST, instance=consulta)
+        if form.is_valid():
+            consulta = form.save(commit=False)
+            consulta.save()
+            messages.success(request, "Consulta atualizada.")
+            return redirect('detalhes_consulta', pk=consulta.pk)
+    else:
+        form = ConsultationForm(instance=consulta)
+    return render(request, 'consultations/editar_consulta.html', {'form': form, 'consulta': consulta})
+
+# View para deletar uma consulta existente
+def deletar_consulta(request, pk):
+    # Garante que o usuário esteja logado em uma conta de staff
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('failure')
+    
+    # Recebe a consulta do id recebido e a deleta
+    consulta = get_object_or_404(Consultation, pk=pk)
+    consulta.delete()
+    messages.success(request, "Consulta deletada com sucesso! :)")
+
+    return redirect('cronograma_consultas')
 
 # View para exibir a página de falha de autenticação
 def failure(request):

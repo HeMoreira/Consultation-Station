@@ -1,6 +1,7 @@
 from django.test import TestCase
-from ..models import User
+from ..models import User, Consultation, Doctor
 from django.urls import reverse
+from django.utils import timezone
 
 class ConsultationViewsTest(TestCase):
     # Testa se as views de nova consulta e cronograma de consultas estão acessíveis e usam os templates corretos
@@ -25,6 +26,17 @@ class ConsultationViewsTest(TestCase):
             'is_staff': True,
             'is_superuser': True,
         }
+        self.doctor_data = {
+            'name': 'Dr. João Silva',
+            'specialty': 'Cardiologia',
+            'gender': 'M',
+            'phone': '11987654321',
+            'email': 'joaoprofissional@gmail.com',
+            'address': 'Rua das Flores, 123 - SP',
+            'cpf': '12345678901',
+            'date_of_birth': timezone.now().date()
+        }
+        self.doctor = Doctor.objects.create(**self.doctor_data)
         self.user = User.objects.create_user(**self.user_data)
         self.superuser = User.objects.create_user(**self.superuser_data)
     
@@ -67,6 +79,63 @@ class ConsultationViewsTest(TestCase):
         # A página não deve ser acessível sem login, então o template deve ser de falha
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'consultations/failure.html')
+
+    def test_detalhes_consulta_view(self):
+        # Cria uma consulta de teste
+        consulta = Consultation.objects.create(
+            user_account=self.user,
+            patient_name="Teste Paciente",
+            doctor=self.doctor,
+            date="2024-12-31 10:00",
+            description="Descrição de teste",
+            duration=30
+        )
+
+        # Obtem a URL da view de detalhes da consulta após fazer login como staff
+        self.client.login(username=self.superuser_data['email'], password=self.superuser_data['password'])
+        response = self.client.get(reverse('detalhes_consulta', args=[consulta.pk]))
+        # Verifica se a resposta foi bem-sucedida e se o template correto foi usado
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'consultations/detalhes_consulta.html')
+    
+    def test_editar_consulta_view(self):
+        # Cria uma consulta de teste
+        consulta = Consultation.objects.create(
+            user_account=self.user,
+            patient_name="Teste Paciente",
+            doctor=self.doctor,
+            date="2024-12-31 10:00",
+            description="Descrição de teste",
+            duration=30
+        )
+
+        # Obtem a URL da view de editar a consulta após fazer login como staff
+        self.client.login(username=self.superuser_data['email'], password=self.superuser_data['password'])
+        response = self.client.get(reverse('editar_consulta', args=[consulta.pk]))
+        # Verifica se a resposta foi bem-sucedida e se o template correto foi usado
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'consultations/editar_consulta.html')
+
+    def test_deletar_consulta_view(self):
+        # Cria uma consulta de teste
+        consulta = Consultation.objects.create(
+            user_account=self.user,
+            patient_name="Teste Paciente",
+            doctor=self.doctor,
+            date="2024-12-31 10:00",
+            description="Descrição de teste",
+            duration=30
+        )
+
+        # Obtem a URL da view de deletar a consulta após fazer login como staff
+        self.client.login(username=self.superuser_data['email'], password=self.superuser_data['password'])
+        response = self.client.post(reverse('deletar_consulta', args=[consulta.pk]), follow=True)
+        # Verifica se a resposta foi bem-sucedida e se redirecionou para o cronograma de consultas
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'consultations/cronograma_consultas.html')
+        # Verifica se a consulta foi realmente deletada
+        with self.assertRaises(Consultation.DoesNotExist):
+            Consultation.objects.get(pk=consulta.pk)
 
     def test_failure_view(self):
         # Obtem a URL da view de falha de autenticação

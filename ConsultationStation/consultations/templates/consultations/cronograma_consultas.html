@@ -53,9 +53,9 @@
                         {% for consulta in consultas %}
                             {{ consulta.patient_name }}<br>
                             Duração: {{ consulta.duration }}min<br><br>
-                            <a href="">Deletar</a> |
-                            <a href="">Visualizar</a> |
-                            <a href="">Remarcar</a>
+                            <a href="{% url 'deletar_consulta' consulta.pk %}">Deletar</a> |
+                            <a href="{% url 'detalhes_consulta' consulta.pk %}">Visualizar</a> |
+                            <a href="{% url 'editar_consulta' consulta.pk %}">Editar</a>
                         {% endfor %}
                     {% else %}
                         <p>---</p>
